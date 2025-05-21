@@ -3,4 +3,5 @@ export const LABELS = {
   title: "Patent Registration App",
   securityText: "Please enter the security key",
   logIn: "LOG-IN",
+  logOut: "Log-Out",
 };

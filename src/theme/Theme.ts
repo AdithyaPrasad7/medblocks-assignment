@@ -20,6 +20,17 @@ const theme = createTheme({
           },
         },
       },
+      variants: [
+        {
+          props: { variant: "contained", color: "secondary" },
+          style: {
+            backgroundColor: "#2B1B49",
+            "&:hover": {
+              backgroundColor: "#2D2C51",
+            },
+          },
+        },
+      ],
     },
   },
 });
