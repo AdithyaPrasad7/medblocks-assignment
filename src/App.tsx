@@ -1,32 +1,35 @@
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Route,
   Routes,
   Navigate,
+  useNavigate,
 } from "react-router-dom";
 import Login from "./component/login/Login";
 import Home from "./component/home/Home";
 import { isAuthenticated } from "./utils/auth";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/home"
-          element={
-            isAuthenticated() ? <Home /> : <Navigate to="/log" replace />
-          }
-        />
-        <Route
-          path="/*"
-          element={
-            isAuthenticated() ? <Home /> : <Navigate to="/login" replace />
-          }
-        />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/home"
+        element={!!isAuthenticated() ? <Home /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/*"
+        element={
+          !!isAuthenticated() ? (
+            <Navigate to="/home" />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+    </Routes>
   );
 }
 
