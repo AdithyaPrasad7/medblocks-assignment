@@ -7,4 +7,11 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
+  server: {
+    port: 3000,
+    open: true,
+  },
+  optimizeDeps: {
+    exclude: ["@electric-sql/pglite"],
+  },
 });
