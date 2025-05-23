@@ -13,13 +13,13 @@ const Header: FC = () => {
   const classes = useStyles();
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, textAlign: "center" }}
+            sx={{ flexGrow: 1, textAlign: "center", ml: 10 }}
           >
             {LABELS.title}
           </Typography>

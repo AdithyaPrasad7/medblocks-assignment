@@ -1,0 +1,15 @@
+export const LABELS = {
+  addDummyData: "Add Dummy Data",
+  addPatient: "Add Patient",
+  exportData: "Export Data",
+  refresh: "Refresh",
+  reset: "Reset",
+  runQuery: "Run Query",
+  id: "ID",
+  name: "Name",
+  email: "Email",
+  phone: "Phone",
+  gender: "Gender",
+  address: "Address",
+  dob: "Date of Birth",
+};
