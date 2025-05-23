@@ -58,7 +58,9 @@ const Home: FC = () => {
       }
     });
   }, []);
-
+  useEffect(() => {
+    fetchPatients();
+  }, []);
   const fetchPatients = async () => {
     setIsLoading(true);
     try {
@@ -93,6 +95,7 @@ const Home: FC = () => {
       setSnackbarSeverity("success");
       setSnackbarMessage("Patient added successfully");
       toggleDialog();
+      fetchPatients();
     }
   };
 
@@ -104,7 +107,14 @@ const Home: FC = () => {
     <Box>
       <Header />
       <ButtonGroup size="large" className={classes.buttonGroup}>
-        <Button onClick={addDummyData}>{LABELS.addDummyData}</Button>
+        <Button
+          onClick={() => {
+            addDummyData();
+            fetchPatients();
+          }}
+        >
+          {LABELS.addDummyData}
+        </Button>
         <Button onClick={toggleDialog}>{LABELS.addPatient}</Button>
         <Button onClick={handleDownload}>{LABELS.exportData}</Button>
         <Button
