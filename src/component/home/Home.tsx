@@ -10,6 +10,7 @@ import { useDatabase } from "../../db/useDataBase";
 import type { Patient } from "../../data/Patient";
 import PatientTable from "../patientTable/PatientTable";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import { broadcastChannel } from "../../utils/broadcast";
 
 const Home: FC = () => {
   const classes = useStyles();
@@ -50,6 +51,13 @@ const Home: FC = () => {
     "success"
   );
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
+  useEffect(() => {
+    broadcastChannel().listenToBroadcastChannel((msg: { type: string }) => {
+      if (msg.type === "refreshPatients") {
+        fetchPatients();
+      }
+    });
+  }, []);
 
   const fetchPatients = async () => {
     setIsLoading(true);
@@ -62,11 +70,6 @@ const Home: FC = () => {
       setIsLoading(false);
     }
   };
-  useEffect(() => {
-    if (!openDialog) {
-      fetchPatients();
-    }
-  }, [openDialog]);
 
   const handleDownload = () => {
     const csv = Papa.unparse(patients);
@@ -93,11 +96,6 @@ const Home: FC = () => {
     }
   };
 
-  const handleAddDummyData = () => {
-    addDummyData();
-    fetchPatients();
-  };
-
   const handleValidateEmail = (email: string) => {
     return validateEmail(email);
   };
@@ -106,7 +104,7 @@ const Home: FC = () => {
     <Box>
       <Header />
       <ButtonGroup size="large" className={classes.buttonGroup}>
-        <Button onClick={handleAddDummyData}>{LABELS.addDummyData}</Button>
+        <Button onClick={addDummyData}>{LABELS.addDummyData}</Button>
         <Button onClick={toggleDialog}>{LABELS.addPatient}</Button>
         <Button onClick={handleDownload}>{LABELS.exportData}</Button>
         <Button

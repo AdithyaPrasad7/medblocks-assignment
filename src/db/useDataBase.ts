@@ -8,6 +8,7 @@ import {
   selectQuery,
   validateEmailQuery,
 } from "../data/Queries";
+import { broadcastChannel } from "../utils/broadcast";
 
 export const pg = new PGliteWorker(
   new Worker(new URL("db.ts", import.meta.url), {
@@ -21,6 +22,7 @@ export const pg = new PGliteWorker(
 );
 
 export function useDatabase() {
+  const { postBroadcastMessage } = broadcastChannel();
   const insertPatient = useCallback(async (patient: Patient) => {
     const { name, email, phone, gender, address, dob } = patient;
     try {
@@ -32,6 +34,7 @@ export function useDatabase() {
         address,
         dob,
       ]);
+      postBroadcastMessage({ type: "refreshPatients" });
 
       return true;
     } catch (error) {
@@ -47,6 +50,7 @@ export function useDatabase() {
 
   const addDummyData = useCallback(async () => {
     await pg.exec(dummyDataQuery);
+    postBroadcastMessage({ type: "refreshPatients" });
   }, []);
 
   const getData = useCallback(async () => {
@@ -56,8 +60,6 @@ export function useDatabase() {
 
   const validateEmail = useCallback(async (email: string) => {
     const data = await pg.query(validateEmailQuery, [email]);
-    console.log(data);
-
     return data.rows.length > 0;
   }, []);
 
