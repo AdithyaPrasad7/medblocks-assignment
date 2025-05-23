@@ -1,10 +1,4 @@
-import {
-  HashRouter,
-  Route,
-  Routes,
-  Navigate,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Login from "./component/login/Login";
 import Home from "./component/home/Home";
 import { isAuthenticated } from "./utils/auth";

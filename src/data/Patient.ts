@@ -1,11 +1,11 @@
 export interface Patient {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  gender: string;
-  address: string;
-  dob: Date;
-  created_date: Date;
-  updated_date: Date;
+  id: number | undefined;
+  name: string | undefined;
+  email: string | undefined;
+  phone: string | undefined;
+  gender: string | undefined;
+  address: string | undefined;
+  dob: Date | undefined;
+  created_date: Date | undefined;
+  updated_date: Date | undefined;
 }

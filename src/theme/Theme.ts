@@ -18,6 +18,11 @@ const theme = createTheme({
           "&:hover": {
             backgroundColor: "#084f5a",
           },
+          "&:disabled": {
+            backgroundColor: "rgba(0, 0, 0, 0.12)",
+            color: "rgba(0, 0, 0, 0.26)",
+            textAlign: "center",
+          },
         },
       },
       variants: [
