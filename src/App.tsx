@@ -8,7 +8,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={!!isAuthenticated() ? <Navigate to="/home" /> : <Login />}
+      />
       <Route
         path="/home"
         element={!!isAuthenticated() ? <Home /> : <Navigate to="/login" />}
