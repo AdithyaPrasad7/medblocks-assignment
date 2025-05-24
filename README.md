@@ -34,8 +34,8 @@ A frontend-only patient registration system built using **React**, **PgLite**, a
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/patient-registration-app.git
-cd patient-registration-app
+git clone https://github.com/AdithyaPrasad7/medblocks-assignment.git
+cd medblocks-assignment
 ```
 
 ### 2. Install dependencies
