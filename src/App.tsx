@@ -17,7 +17,10 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/home" element={<Home />} />
+      <Route
+        path="/home"
+        element={!!isAuthenticated() ? <Home /> : <Navigate to="/login" />}
+      />
       <Route
         path="/*"
         element={
