@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# 🏥 Patient Registration App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend-only patient registration system built using **React**, **PgLite**, and **Material-UI**, designed for modern browsers with **multi-tab synchronization** and **persistent local SQL storage**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Tech Stack
 
-## Expanding the ESLint configuration
+- ⚡ **Vite** – Lightning-fast build tool
+- ⚛️ **React** – UI library for building interactive interfaces
+- 🎨 **Material-UI (MUI)** – Component library for clean and responsive design
+- 📝 **Formik** – Seamless form state management
+- 🧠 **PgLite** – In-browser SQLite-compatible database
+- 📢 **BroadcastChannel API** – Enables real-time data sync across browser tabs
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ✨ Features
+
+- Register new patients using Formik-based forms
+- View patient records stored locally in the browser using PgLite
+- Query data using raw SQL (powered by PgLite)
+- Multi-tab data synchronization via `BroadcastChannel`
+- Patient data persists across browser refreshes
+- Download the data to CSV
+- Add initial dummy data
+- Fast and lightweight frontend-only implementation
+- Client-side routing handled via react-router-dom
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/patient-registration-app.git
+cd patient-registration-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. Run the app
+
+```bash
+npm run dev
+```
+
+---
+
+## Note
+
+Initial security key is `123`.
+
+Can be changed in `.env`
+
+---
+
+## 🌐 Live Demo
+
+The app is deployed and publicly accessible on Netlify:
+
+👉 [Open Live App](https://683083546cd7cee6258dea3d--soft-croquembouche-medblocks.netlify.app/)
+
+Security key is `123`
+
+---
